@@ -1,0 +1,99 @@
+Deskripsi
+
+Sistem Monitoring Kendaraan adalah aplikasi web untuk mengelola data kendaraan, pengguna, dan pemesanan. Pengguna dapat mendaftar, login, mengelola data kendaraan, dan memesan kendaraan.
+Alur Penggunaan
+1. Login
+
+    Tujuan: Untuk mengakses sistem, pengguna harus login terlebih dahulu.
+    Langkah:
+        Buka halaman login.
+        Masukkan username dan password yang sudah terdaftar.
+        Klik tombol "Login" untuk masuk ke sistem.
+
+2. Registrasi
+
+Jika Anda belum memiliki akun, Anda perlu mendaftar terlebih dahulu.
+
+    Tujuan: Mendaftarkan akun baru untuk mengakses sistem.
+    Langkah:
+        Buka halaman registrasi.
+        Isi formulir dengan informasi yang diperlukan, seperti nama, nomor telepon, dan alamat.
+        Klik tombol "Daftar" untuk membuat akun baru.
+
+3. Pengisian Data Pengguna
+
+Setelah berhasil login atau terdaftar, Anda perlu mengisi data pengguna.
+
+    Tujuan: Mengelola informasi pengguna di sistem.
+    Langkah:
+        Akses halaman "Form Pengguna".
+        Isi formulir dengan informasi pengguna Anda.
+        Klik tombol "Simpan" untuk menyimpan data pengguna.
+
+4. Pengisian Data Kendaraan
+
+Setelah data pengguna terisi, langkah berikutnya adalah mengisi data kendaraan.
+
+    Tujuan: Menambahkan informasi kendaraan yang akan dikelola.
+    Langkah:
+        Akses halaman "Form Kendaraan".
+        Isi formulir dengan informasi kendaraan seperti plat nomor, jenis, dan status.
+        Klik tombol "Simpan" untuk menambahkan data kendaraan.
+
+5. Konfirmasi Pemesanan
+
+Setelah mengisi data kendaraan, Anda dapat membuat pemesanan dan mengonfirmasi informasi pemesanan.
+
+    Tujuan: Mengelola dan mengonfirmasi pemesanan kendaraan.
+    Langkah:
+        Akses halaman "Daftar Pemesanan".
+        Pilih kendaraan dan tanggal pemesanan yang diinginkan.
+        Konfirmasi pemesanan dan pastikan semua informasi benar.
+        Klik tombol "Konfirmasi" untuk menyelesaikan pemesanan.
+
+Fitur
+
+    Login dan Registrasi: Memungkinkan pengguna untuk mendaftar dan login ke sistem.
+    Pengelolaan Data Pengguna: Menambahkan, mengedit, dan menghapus data pengguna.
+    Pengelolaan Data Kendaraan: Menambahkan, mengedit, dan menghapus data kendaraan.
+    Pemesanan Kendaraan: Membuat dan mengonfirmasi pemesanan kendaraan.
+    export untuk mendownload dalam bentuk pdf 
+    logout untuk mengembalikan ke posisi login
+    sert index adalah menu dashboard
+Teknologi
+
+    Bahasa Pemrograman: PHP
+    Database: MySQL
+    Frontend: HTML, CSS
+
+    NAMA FOLDER:TES 1 di htdocs
+    NAMA DATABASE:monitoring
+ 
+ Tabel Pengguna
+ CREATE TABLE pemesanan (
+    id_pemesanan INT(11) AUTO_INCREMENT PRIMARY KEY,
+    id_user INT(11) NOT NULL,
+    id_kendaraan INT(11) NOT NULL,
+    tanggal DATE NOT NULL,
+    status ENUM('pending', 'approved', 'rejected') NOT NULL,
+    FOREIGN KEY (id_user) REFERENCES pengguna(id_user),
+    FOREIGN KEY (id_kendaraan) REFERENCES kendaraan(id_kendaraan)
+);
+ Tabel Kendaraan
+ CREATE TABLE kendaraan (
+    id_kendaraan INT(11) AUTO_INCREMENT PRIMARY KEY,
+    plat_nomor VARCHAR(20) NOT NULL,
+    jenis VARCHAR(50) NOT NULL,
+    status ENUM('milik', 'sewa') NOT NULL
+);
+
+Tabel Pemsanan
+CREATE TABLE pemesanan (
+    id_pemesanan INT(11) AUTO_INCREMENT PRIMARY KEY,
+    id_user INT(11) NOT NULL,
+    id_kendaraan INT(11) NOT NULL,
+    tanggal DATE NOT NULL,
+    status ENUM('pending', 'approved', 'rejected') NOT NULL,
+    FOREIGN KEY (id_user) REFERENCES pengguna(id_user),
+    FOREIGN KEY (id_kendaraan) REFERENCES kendaraan(id_kendaraan)
+);
